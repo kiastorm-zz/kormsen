@@ -4,12 +4,47 @@ import { Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-const Sights = () => (
+const Sights = ({ data }) => (
   <Layout>
     <SEO title="Sights" />
-    <h1>Sounds</h1>
+    <h1>Sights</h1>
+    {data.allContentfulSights.edges.map(({ node }) => {
+      return (
+        <div key={node.id}>
+          <h1>{node.title}</h1>
+          <h4><a href={node.slug}>This is a link to the post</a></h4>
+        </div>
+      )
+    })}
     <Link to="/">Go back to the homepage</Link>
+
+    {console.log(data)}
+
   </Layout>
 );
 
 export default Sights;
+
+export const query = graphql`
+  query SightsQuery {
+    allContentfulSights {
+      edges {
+        node {
+          id
+          title
+          slug
+          description {
+            description
+          }
+          author
+          content {
+            id
+            fluid(maxWidth: 600) {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`;
