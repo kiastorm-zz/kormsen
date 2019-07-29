@@ -8,9 +8,10 @@
 import React, { useRef } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import ThreeCanvas from "../components/three-canvas";
+import ThreeCanvas from "./ThreeCanvas/three-canvas";
 import styled from 'styled-components';
 import Sidebar from "./sidebar"
+import below from "../lib/utils/breakpoints";
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -24,8 +25,6 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const canvasRef = useRef(null);
-
   const AppContainer = styled.div`
     display: grid;
     grid-template-areas:
@@ -35,9 +34,17 @@ const Layout = ({ children }) => {
 
     grid-template-columns: 230px 1fr;
     grid-template-rows: auto 1fr auto;
-    grid-gap: 24px;
-
     height: 100vh;
+    overflow: hidden;
+
+    ${below.p`
+      grid-template-areas:
+        "sidebar"
+        "content"
+
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px 1fr;
+    `}
   `;
 
   const MainContent = styled.div`
@@ -45,19 +52,11 @@ const Layout = ({ children }) => {
     flex: 1;
     height: 100%;
     min-height: 100vh;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 208px;
   `;
 
   const StyledCanvas = styled(ThreeCanvas)`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -2;
+    width: 100%;
+    height: 100%;
   `;
 
 
@@ -71,13 +70,11 @@ const Layout = ({ children }) => {
     padding-top: 0;
   `;
 
-
-
   return (
     <AppContainer>
       <Sidebar siteTitle={data.site.siteMetadata.title} />
       <MainContent>
-        <StyledCanvas ref={canvasRef} />
+        <StyledCanvas />
         <ContentGrid>
           <main>
             {children}
