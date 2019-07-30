@@ -1,7 +1,6 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { TextureLoader } from 'three';
-
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { TextureLoader } from "three";
 
 function loadTexture(url) {
   return load(TextureLoader, url);
@@ -17,16 +16,8 @@ function loadGLTF(url) {
 
 function load(loader, url) {
   return new Promise((resolve, reject) => {
-    new loader().load(url,
-      resp => resolve(resp),
-      null,
-      err => reject(err)
-    );
+    new loader().load(url, resp => resolve(resp), null, err => reject(err));
   });
 }
 
-export {
-  loadTexture,
-  loadOBJ,
-  loadGLTF
-}
+export { loadTexture, loadOBJ, loadGLTF };

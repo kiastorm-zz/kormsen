@@ -5,14 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useRef } from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import ThreeCanvas from "./ThreeCanvas/three-canvas";
-import styled from 'styled-components';
-import Sidebar from "./sidebar"
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import Canvas from "./Canvas/Canvas";
+import styled from "styled-components";
+import Sidebar from "./sidebar";
 import below from "../lib/utils/breakpoints";
-import "./layout.css"
+import "./layout.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,14 +23,14 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   const AppContainer = styled.div`
     display: grid;
     grid-template-areas:
-    "sidebar banner"
-    "sidebar content"
-    "sidebar content";
+      "sidebar banner"
+      "sidebar content"
+      "sidebar content";
 
     grid-template-columns: 230px 1fr;
     grid-template-rows: auto 1fr auto;
@@ -54,11 +54,10 @@ const Layout = ({ children }) => {
     min-height: 100vh;
   `;
 
-  const StyledCanvas = styled(ThreeCanvas)`
+  const StyledCanvas = styled(Canvas)`
     width: 100%;
     height: 100%;
   `;
-
 
   const ContentGrid = styled.div`
     padding: 0 32px;
@@ -76,9 +75,7 @@ const Layout = ({ children }) => {
       <MainContent>
         <StyledCanvas />
         <ContentGrid>
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
@@ -87,11 +84,11 @@ const Layout = ({ children }) => {
         </ContentGrid>
       </MainContent>
     </AppContainer>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
