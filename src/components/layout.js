@@ -28,9 +28,12 @@ const Layout = ({ children }) => {
   const AppContainer = styled.div`
     display: grid;
     grid-template-areas:
-      "sidebar banner"
+      /* "sidebar banner"
       "sidebar content"
-      "sidebar content";
+      "sidebar content"; */
+      "content content"
+      "content content"
+      "content content";
 
     grid-template-columns: 230px 1fr;
     grid-template-rows: auto 1fr auto;
@@ -39,11 +42,11 @@ const Layout = ({ children }) => {
 
     ${below.p`
       grid-template-areas:
-        "sidebar"
+        "content"
         "content"
 
       grid-template-columns: 1fr;
-      grid-template-rows: 300px 1fr;
+      grid-template-rows: 1fr;
     `}
   `;
 
@@ -72,7 +75,19 @@ const Layout = ({ children }) => {
   return (
     <AppContainer>
       <Sidebar siteTitle={data.site.siteMetadata.title} />
-      <MainContent>
+      <MainContent style={{ position: "relative" }}>
+        <h1
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 3,
+            color: "white",
+          }}
+        >
+          Coming soon ya bish
+        </h1>
         <StyledCanvas />
         <ContentGrid>
           <main>{children}</main>

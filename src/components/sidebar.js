@@ -1,7 +1,10 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import styled from 'styled-components';
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import styled from "styled-components";
+import below from "../lib/utils/breakpoints";
+
+console.log(below);
 
 const StyledSidebar = styled.nav`
   grid-area: sidebar;
@@ -9,12 +12,16 @@ const StyledSidebar = styled.nav`
   min-height: 100vh;
   background: #122932;
   width: 230px;
+
+  ${below.p`
+    display: none;
+  `}
 `;
 
 const Sidebar = ({ siteTitle }) => (
   <StyledSidebar
     style={{
-      background: '#141414',
+      background: "#141414",
     }}
   >
     <div
@@ -24,7 +31,7 @@ const Sidebar = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: '0 0 20px 0' }}>
+      <h1 style={{ margin: "0 0 20px 0" }}>
         <Link
           to="/"
           style={{
@@ -41,7 +48,7 @@ const Sidebar = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
-            textTransform: 'uppercase'
+            textTransform: "uppercase",
           }}
         >
           Sights
@@ -53,7 +60,7 @@ const Sidebar = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
-            textTransform: 'uppercase'
+            textTransform: "uppercase",
           }}
         >
           sounds
@@ -65,7 +72,7 @@ const Sidebar = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
-            textTransform: 'uppercase'
+            textTransform: "uppercase",
           }}
         >
           thoughts
@@ -73,14 +80,14 @@ const Sidebar = ({ siteTitle }) => (
       </h3>
     </div>
   </StyledSidebar>
-)
+);
 
 Sidebar.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Sidebar.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Sidebar
+export default Sidebar;
