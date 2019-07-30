@@ -43,6 +43,8 @@ function getLoader(type) {
     case "collada": {
       return new ColladaLoader(manager);
     }
+    default:
+      return;
   }
 }
 

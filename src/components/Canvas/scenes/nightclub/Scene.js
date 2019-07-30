@@ -1,22 +1,7 @@
-import React, { Suspense, useRef, useMemo, useEffect } from "react";
-import { useThree } from "react-three-fiber";
+import React from "react";
 import Stars from "./assets/Stars";
 
-const Box = ({}) => {
-  return (
-    <mesh>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial attach="material" transparent opacity={0.5} />
-    </mesh>
-  );
-};
-
 export default function Scene({ model }) {
-  const {
-    gl, // WebGL renderer
-    canvas, // canvas the dom element that was created
-  } = useThree();
-
   return (
     <>
       <ambientLight color="lightblue" />
