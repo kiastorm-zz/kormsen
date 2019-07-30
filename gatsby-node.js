@@ -8,9 +8,41 @@
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
-const path = require("path")
+const path = require("path");
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.(gltf)$/,
+          use: [
+            {
+              loader: "gltf-webpack-loader",
+            },
+          ],
+        },
+        {
+          test: /\.(bin)$/,
+          use: [
+            {
+              loader: "file-loader",
+              options: {},
+            },
+          ],
+        },
+      ],
+    },
+  });
+};
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -33,8 +65,8 @@ exports.createPages = ({ graphql, actions }) => {
           path: node.slug,
           component: path.resolve("./src/templates/PhotoAlbum.js"),
           context: {
-            slug: node.slug
-          }
+            slug: node.slug,
+          },
         });
       });
       resolve();
