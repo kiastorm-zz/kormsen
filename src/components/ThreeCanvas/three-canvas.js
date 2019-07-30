@@ -1,58 +1,19 @@
-import React, { useRef, useState, useEffect } from "react";
-import useComponentSize from '@rehooks/component-size';
-import * as THREE from 'three';
-import {
-  createScene,
-  createLights,
-  createOrbitControls,
-  createRenderer,
-  createCamera,
-  createCube
-} from './sceneRenderer.js';
-
+import React, { useCallback } from "react";
+import { Canvas } from 'react-three-fiber'
+import { useSpring } from 'react-spring'
+import Scene from './assets/confetti/scene';
+import Camera from './three-canvas';
 
 const ThreeCanvas = (props) => {
-  const canvasRef = useRef(null);
-  const [state, setState] = useState({});
-  const [size, setSize] = useState({});
+  const [{ top, mouse }, set] = useSpring(() => ({ top: 0, mouse: [0, 0] }))
+  const onMouseMove = useCallback(({ clientX: x, clientY: y }) => set({ mouse: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [])
+  const onScroll = useCallback(e => set({ top: e.target.scrollTop }), [])
 
-  const initialSize = useComponentSize(canvasRef, setSize);
-
-  if (initialSize.width && !state.hasRendered) {
-    const scene = createScene();
-    const camera = createCamera(initialSize.width, initialSize.height);
-    const renderer = createRenderer();
-    const cube = createCube();
-    const oribitControls = createOrbitControls(camera, renderer.domElement);
-    const lights = createLights();
-
-    renderer.setSize(initialSize.width, initialSize.height);
-
-    canvasRef.current.appendChild(renderer.domElement);
-
-    scene.add(cube);
-
-    renderer.render(scene, camera);
-
-    const animate = function () {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
-    setState(prevState => ({
-      ...prevState,
-      renderer,
-      camera,
-      scene,
-      hasRendered: true
-    }));
-  }
-
-  return <div className={props.className} ref={canvasRef}></div>
+  return (
+    <Canvas style={{ background: '#333333' }} camera={{ position: [0, 90, 150] }}>
+      <Scene top={top} mouse={mouse} />
+    </Canvas>
+  )
 };
 
 

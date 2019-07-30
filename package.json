@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "kormsen",
   "private": true,
   "description": "A platform for sharing and promoting creative work.",
   "version": "0.1.0",
@@ -24,8 +24,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-three-renderer": "^3.2.4",
-    "react-three-renderer-objects": "0.0.6",
+    "react-spring": "^8.0.27",
+    "react-three-fiber": "^2.2.14",
     "styled-components": "^4.3.2",
     "three": "^0.106.2",
     "three-orbit-controls": "^82.1.0"

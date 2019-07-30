@@ -14,7 +14,7 @@ const StyledSidebar = styled.nav`
 const Sidebar = ({ siteTitle }) => (
   <StyledSidebar
     style={{
-      background: `darkgrey`,
+      background: '#141414',
     }}
   >
     <div
