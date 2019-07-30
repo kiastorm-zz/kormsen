@@ -67,12 +67,12 @@ const useModelLoader = (type, src) => {
         model.scene.traverse(node => {
           if (!node.isSkinnedMesh && !node.material) return;
 
-          if (
-            node.material.name !== "Bottommat" &&
-            node.material.name !== "Topmat"
-          ) {
-            node.material.wireframe = true;
-          }
+          // if (
+          //   node.material.name !== "Bottommat" &&
+          //   node.material.name !== "Topmat"
+          // ) {
+          //   node.material.wireframe = true;
+          // }
         });
 
         setModel(model);

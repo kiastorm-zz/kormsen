@@ -7362,7 +7362,7 @@
           }
         }
       ],
-      "name": "mixamo.com",
+      "name": "mixamo",
       "samplers": [
         {
           "input": 43,
@@ -8617,7 +8617,7 @@
         0,
         1
       ],
-      "name": "658eccf02ffb4b4f9c2ca99b81c74eb8.fbx"
+      "name": "658eccf02ffb4b4f9c2ca99b81c74eb8"
     },
     {
       "children": [

@@ -3,6 +3,7 @@ import { Canvas, useThree, useRender, extend } from "react-three-fiber";
 import NightclubScene from "./scenes/nightclub/Scene";
 import CoreModelViewer from "./ModelViewer/core/CoreModelViewer";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import dancingGirl from "../../assets/models/dancing-girl/scene.gltf";
 
 extend({ OrbitControls });
 
@@ -38,7 +39,7 @@ const ThreeCanvas = ({ src, type, aspect, ...rest }) => {
   }, []);
 
   return (
-    <CoreModelViewer src="http://localhost:8002/scene.gltf" type="gltf">
+    <CoreModelViewer src={dancingGirl} type="gltf">
       {({
         model,
         modelCenter,
