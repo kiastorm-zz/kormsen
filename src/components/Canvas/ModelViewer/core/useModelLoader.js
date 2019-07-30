@@ -62,8 +62,18 @@ const useModelLoader = (type, src) => {
       src,
       // called when the resource is loaded
       model => {
-        console.log("model successfully loaded", model);
-        setModel(model.scene);
+        model.scene.traverse(node => {
+          if (!node.isSkinnedMesh && !node.material) return;
+
+          if (
+            node.material.name !== "Bottommat" &&
+            node.material.name !== "Topmat"
+          ) {
+            node.material.wireframe = true;
+          }
+        });
+
+        setModel(model);
       },
       // called while loading is progressing
       ({ loaded, total }) => {
@@ -83,11 +93,9 @@ const useModelLoader = (type, src) => {
       return;
     }
 
-    console.log("hi");
-
     const box = new THREE.Box3();
 
-    box.setFromObject(model);
+    box.setFromObject(model.scene);
 
     const center = new THREE.Vector3();
 

@@ -20,9 +20,16 @@ export default function Scene({ model }) {
   return (
     <>
       <ambientLight color="lightblue" />
-      <pointLight color="white" intensity={4} position={[50, 150, 50]} />
+      <pointLight color="white" intensity={4} position={[50, 300, 50]} />
       <Stars />
-      {model && <primitive object={model.scene || model} />}
+      {model && (
+        <primitive
+          object={model.scene || model}
+          position={[0, -80, 0]}
+          wireframe
+          material={{ wireframe: true }}
+        />
+      )}
     </>
   );
 }

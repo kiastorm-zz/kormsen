@@ -13,13 +13,36 @@ export default function Background() {
     // Some things maybe shouldn't be declarative, we're in the render-loop here with full access to the instance
     const r = 5 * Math.sin(THREE.Math.degToRad((theta += 0.1)));
     const s = Math.cos(THREE.Math.degToRad(theta * 2));
-    group.current.rotation.set(r, r, r);
-    group.current.scale.set(s, s, s);
+    group.current.rotation.set(-r, -r, -r);
+    group.current.scale.set(1, 1, 1);
   });
+
+  const [spaceGeo, spaceMat, spaceSphere] = useMemo(() => {
+    const spaceTex = THREE.ImageUtils.loadTexture(
+      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/96252/space.jpg"
+    );
+    const spaceGeo = new THREE.SphereGeometry(200, 200, 200);
+    const spaceMat = new THREE.MeshPhongMaterial();
+
+    const spaceSphere = new THREE.Mesh(spaceGeo, spaceMat);
+
+    spaceMat.map = spaceTex;
+
+    //spacesphere needs to be double sided as the camera is within the spacesphere
+    spaceSphere.material.side = THREE.DoubleSide;
+
+    spaceSphere.material.map.wrapS = THREE.RepeatWrapping;
+    spaceSphere.material.map.wrapT = THREE.RepeatWrapping;
+    spaceSphere.material.map.repeat.set(5, 3);
+
+    return [spaceGeo, spaceMat, spaceSphere];
+  }, []);
 
   const [geo, mat, vertices, coords] = useMemo(() => {
     const geo = new THREE.SphereBufferGeometry(1, 10, 10);
-    const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color("red") });
+    const mat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color("lightblue"),
+    });
     const coords = new Array(2000)
       .fill()
       .map(i => [
@@ -32,6 +55,8 @@ export default function Background() {
 
   return (
     <group ref={group}>
+      {/* <mesh geometry={spaceGeo} mat={spaceMat} position={[0, 0, 0]} /> */}
+      {/* {spaceSphere} */}
       {coords.map(([p1, p2, p3], i) => (
         <mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
       ))}
