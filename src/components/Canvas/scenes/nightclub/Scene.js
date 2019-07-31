@@ -1,5 +1,6 @@
 import React from "react";
 import Stars from "./assets/Stars";
+import DanceFloor from "./assets/DanceFloor";
 
 export default function Scene({ model }) {
   return (
@@ -15,6 +16,7 @@ export default function Scene({ model }) {
           material={{ wireframe: true }}
         />
       )}
+      <DanceFloor />
     </>
   );
 }

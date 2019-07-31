@@ -20,7 +20,7 @@ const ThreeCanvas = ({ src, type, aspect, ...rest }) => {
   useEffect(() => {
     document.addEventListener(
       "touchmove",
-      function(e) {
+      function (e) {
         console.log(e);
         e.preventDefault();
       },
@@ -29,7 +29,7 @@ const ThreeCanvas = ({ src, type, aspect, ...rest }) => {
     return () => {
       document.removeEventListener(
         "touchmove",
-        function(e) {
+        function (e) {
           console.log(e);
           e.preventDefault();
         },
@@ -58,24 +58,24 @@ const ThreeCanvas = ({ src, type, aspect, ...rest }) => {
         setTimeScale,
         setAnimationIndex,
       }) => (
-        <Canvas
-          style={{ background: "#333" }}
-          camera={{ position: [0, 0, 200] }}
-          {...rest}
-        >
-          <CameraControls
-            enableDamping
-            minDistance={140}
-            maxDistance={400}
-            dampingFactor={0.3}
-            autoRotate
-            autoRotateSpeed={1}
-            minPolarAngle={0.6}
-            maxPolarAngle={Math.PI / 2.25}
-          />
-          <NightclubScene model={model} />
-        </Canvas>
-      )}
+          <Canvas
+            style={{ background: "#333" }}
+            camera={{ position: [0, 0, 200] }}
+            {...rest}
+          >
+            <CameraControls
+              enableDamping
+              minDistance={140}
+              maxDistance={400}
+              dampingFactor={0.3}
+              autoRotate
+              autoRotateSpeed={1}
+              minPolarAngle={0.6}
+              maxPolarAngle={Math.PI / 2.25}
+            />
+            <NightclubScene model={model} />
+          </Canvas>
+        )}
     </CoreModelViewer>
   );
 };
