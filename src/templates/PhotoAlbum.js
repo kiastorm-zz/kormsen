@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const Sights = ({ post }) => (
-  <Layout>
+  <div>
     <SEO title="Sights" />
     {/* <h1>{data.}</h1> */}
     <Link to="/">Go back to the homepage</Link>
-  </Layout>
+  </div>
 );
 
 export default Sights;

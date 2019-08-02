@@ -1,27 +1,52 @@
-import React, { } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "gatsby"
-import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Box from "../components/Box"
 import styled from 'styled-components';
+import { GlobalContext } from "../layouts/GlobalContext"
+import { toggleSidebar } from "../layouts/actions"
 
-const Title = styled.h1`
-  color: ${1 > 4 ? 'red' : 'blue'};
+const Title = styled.h2`
+  color: white;
 `;
 
-const IndexPage = () => {
+const Intro = styled(Box)`
+  background-color: #7c4c64;
+  grid-area: intro;
+`;
+
+const HomePage = styled.div`
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+  "intro ."
+  ". .";
+  width: 100%;
+`;
+
+const IndexPage = (props) => {
+  const { globalState, dispatch } = useContext(GlobalContext);
+
+  console.log('home', globalState);
+
+
+
+
+
   return (
-    <Layout>
+    <HomePage>
       <SEO title="Home" />
-      <Title>Hi people</Title>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
-      <Link to="/page-2/">Go to page 2</Link>
-      <Link to="/sights">Go to page 2</Link>
-    </Layout>
+      <Intro>
+        <Title>A platform for sharing and promoting creativity.</Title>
+        <p>Welcome to your new Gatsby site.</p>
+        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+          <Image />
+        </div>
+        <Link to="/sights">Go to page 2</Link>
+      </Intro>
+    </HomePage>
   );
 }
 

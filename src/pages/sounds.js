@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const Sounds = () => (
-  <Layout>
+  <div>
     <SEO title="Sounds" />
     <h1>Sounds</h1>
     <Link to="/">Go back to the homepage</Link>
-  </Layout>
+  </div>
 );
 
 export default Sounds;

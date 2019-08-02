@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const Sights = ({ data }) => (
-  <Layout>
+  <div>
     <SEO title="Sights" />
     <h1>Sights</h1>
     {data.allContentfulSights.edges.map(({ node }) => {
@@ -20,7 +19,7 @@ const Sights = ({ data }) => (
 
     {console.log(data)}
 
-  </Layout>
+  </div>
 );
 
 export default Sights;

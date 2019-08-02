@@ -4,7 +4,6 @@ import React from "react";
 import styled from "styled-components";
 import below from "../lib/utils/breakpoints";
 
-console.log(below);
 
 const StyledSidebar = styled.nav`
   grid-area: sidebar;
@@ -27,8 +26,7 @@ const Sidebar = ({ siteTitle }) => (
     <div
       style={{
         margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        padding: `20px 30px`,
       }}
     >
       <h1 style={{ margin: "0 0 20px 0" }}>

@@ -35,6 +35,7 @@ module.exports = {
     },
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
+    `gatsby-plugin-layout`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-contentful`,

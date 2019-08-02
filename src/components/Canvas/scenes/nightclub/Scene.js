@@ -16,7 +16,7 @@ export default function Scene({ model }) {
           material={{ wireframe: true }}
         />
       )}
-      <DanceFloor />
+      {/* <DanceFloor /> */}
     </>
   );
 }
