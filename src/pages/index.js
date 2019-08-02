@@ -7,44 +7,35 @@ import styled from 'styled-components';
 import { GlobalContext } from "../layouts/GlobalContext"
 import { toggleSidebar } from "../layouts/actions"
 
-const Title = styled.h2`
-  color: white;
+const Title = styled.h3`
+
 `;
 
 const Intro = styled(Box)`
-  background-color: #7c4c64;
+  background-color: #C77A58;
   grid-area: intro;
+  border-radius: 100%;
 `;
 
 const HomePage = styled.div`
   display: grid;
-  grid-template-columns: 420px 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr 420px;
+  grid-template-rows: 420px 1fr 1fr;
   grid-template-areas:
-  "intro ."
-  ". .";
+  ". . intro"
+  ". . intro";
   width: 100%;
 `;
 
 const IndexPage = (props) => {
   const { globalState, dispatch } = useContext(GlobalContext);
 
-  console.log('home', globalState);
-
-
-
-
-
   return (
     <HomePage>
       <SEO title="Home" />
-      <Intro>
-        <Title>A platform for sharing and promoting creativity.</Title>
-        <p>Welcome to your new Gatsby site.</p>
-        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-          <Image />
-        </div>
-        <Link to="/sights">Go to page 2</Link>
+      <Intro buttonTo="/sights" buttonText="See sights">
+        <Title>A platform for sharing and promoting creativity</Title>
+        <h5>Bringing only the ripest nuggets from around the globe</h5>
       </Intro>
     </HomePage>
   );

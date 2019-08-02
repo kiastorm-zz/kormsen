@@ -67,7 +67,7 @@ const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
           <CanvasContainer className={className}>
             <Canvas
               style={{ background: "#333" }}
-              camera={{ position: [0, 0, 200] }}
+              camera={{ position: [100, 0, 160] }}
               {...rest}
             >
               <CameraControls
@@ -78,6 +78,7 @@ const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
                 autoRotate
                 autoRotateSpeed={1}
                 minPolarAngle={0.6}
+                target={[60, 10, 0]}
                 maxPolarAngle={Math.PI / 2.25}
               />
               <NightclubScene model={model} />
