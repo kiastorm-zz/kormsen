@@ -83,8 +83,8 @@ const Menu = () => {
     to: {
       background: '#7c4c64',
       opacity: menuIsOpen ? 1 : 0,
-      width: menuIsOpen ? `${windowSize.width}px` : `${0}px`,
-      height: menuIsOpen ? `${windowSize.height}px` : `${0}px`,
+      width: menuIsOpen ? `${window.innerWidth}px` : `${0}px`,
+      height: menuIsOpen ? `${window.innerHeight}px` : `${0}px`,
       marginTop: menuIsOpen ? `${0}px` : `${12}px`,
       marginRight: menuIsOpen ? `${0}px` : `${12}px`,
       borderRadius: menuIsOpen ? `${0}%` : `${100}%`,

@@ -27,11 +27,7 @@ const GlobalContextProvider = ({ children }) => {
 
   const value = {
     globalState: {
-      ...globalState,
-      windowSize: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      }
+      ...globalState
     }, actions: actions(dispatch)
   };
 
