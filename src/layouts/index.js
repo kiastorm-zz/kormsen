@@ -11,11 +11,12 @@ import Sidebar from "../components/sidebar";
 import PageTransition from './PageTransition';
 import GlobalContextProvider, { GlobalContext } from "./GlobalContext.js";
 import { useStaticQuery, graphql } from "gatsby";
-import Canvas from "../components/Canvas/Canvas";
+import Canvas from "../components/canvas/canvas";
 import styled from "styled-components";
 import below from "../lib/utils/breakpoints";
 import { Link } from "gatsby"
-import { AppContainer, StyledCanvas, Main, GlobalStyle, StyledPageTransition, PageContent } from "./layout-styles";
+import ToolBar from "../components/tool-bar";
+import { AppContainer, PageContainer, StyledCanvas, Main, GlobalStyle, StyledPageTransition, PageContent } from "./layout-styles";
 
 
 const Layout = ({ children, location }) => {
@@ -30,8 +31,6 @@ const Layout = ({ children, location }) => {
   `);
 
 
-  const { globalState, dispatch } = useContext(GlobalContext);
-
 
   const canvas = useMemo(() => <StyledCanvas />);
 
@@ -39,15 +38,18 @@ const Layout = ({ children, location }) => {
     <GlobalContextProvider>
       <GlobalStyle />
       <AppContainer>
-        <Sidebar siteTitle={data.site.siteMetadata.title} />
-        <Main>
-          {canvas}
-          <StyledPageTransition location={location}>
-            <PageContent>
-              {children}
-            </PageContent>
-          </StyledPageTransition>
-        </Main>
+        <ToolBar />
+        <PageContainer>
+          <Sidebar siteTitle={data.site.siteMetadata.title} />
+          <Main>
+            {canvas}
+            <StyledPageTransition location={location}>
+              <PageContent>
+                {children}
+              </PageContent>
+            </StyledPageTransition>
+          </Main>
+        </PageContainer>
       </AppContainer>
     </GlobalContextProvider>
   );

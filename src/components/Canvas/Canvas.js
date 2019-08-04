@@ -27,7 +27,6 @@ const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
     document.addEventListener(
       "touchmove",
       function (e) {
-        console.log(e);
         e.preventDefault();
       },
       { passive: false }
@@ -36,7 +35,6 @@ const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
       document.removeEventListener(
         "touchmove",
         function (e) {
-          console.log(e);
           e.preventDefault();
         },
         { passive: false }

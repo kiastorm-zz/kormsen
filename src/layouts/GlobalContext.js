@@ -1,36 +1,39 @@
 import React, { createContext, useState, useReducer } from 'react';
+import actions from './actions';
 
-const initialState = {
+const defaultState = {
   sidebarIsOpen: true,
+  menuIsOpen: false,
   currentPage: null,
   showCanvas: true,
+  windowSize: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  }
 };
 
-export const GlobalContext = React.createContext(initialState);
+export const GlobalContext = React.createContext(defaultState);
 
 
 const GlobalContextProvider = ({ children }) => {
-  const [globalState, setGlobalState] = useState(initialState);
-
-  const toggleSidebar = () => {
-    return { ...globalState, sidebarIsOpen: !globalState.sidebarIsOpen }
-  }
-
-
-  const reducer = (state, action) => {
+  const reducer = (globalState, action) => {
     switch (action.type) {
       case 'TOGGLE_SIDEBAR':
-        return toggleSidebar();
+        return { ...globalState, sidebarIsOpen: !globalState.sidebarIsOpen };
+      case 'TOGGLE_MENU':
+        console.log('menuIsOpen:', globalState.menuIsOpen);
+        return { ...globalState, menuIsOpen: !globalState.menuIsOpen };
       default:
         return globalState
     }
   }
 
+  const [globalState, dispatch] = useReducer(reducer, defaultState);
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const value = { globalState, actions: actions(dispatch) };
 
   return (
-    <GlobalContext.Provider value={{ globalState: state, dispatch }}>
+    <GlobalContext.Provider value={value}>
       {children}
     </GlobalContext.Provider>
   );

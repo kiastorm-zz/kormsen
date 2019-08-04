@@ -1,29 +1,35 @@
 
 
 import styled, { createGlobalStyle } from 'styled-components';
-import Canvas from '../components/Canvas/Canvas';
+import Canvas from '../components/canvas/canvas';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 
 
+
+
 export const AppContainer = styled.div`
-    display: grid;
 
-    grid-template-areas: "sidebar main";
-    grid-template-columns: 230px 1fr;
+`;
+
+export const PageContainer = styled.div`
+  display: grid;
+  grid-template-areas: "sidebar main";
+  grid-template-columns: 230px 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  overflow: hidden;
+
+  ${below.p`
+    grid-template-areas:
+      "main"
+      "main"
+
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    height: 100vh;
-    overflow: hidden;
+  `}
+`;
 
-    ${below.p`
-      grid-template-areas:
-        "main"
-        "main"
-
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-    `}
-  `;
 
 export const PageContent = styled.div`
   display: flex;

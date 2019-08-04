@@ -17,13 +17,13 @@ const Intro = styled(Box)`
   border-radius: 100%;
 `;
 
-const HomePage = styled.div`
+const BlogIndex = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 420px;
   grid-template-rows: 420px 1fr 1fr;
   grid-template-areas:
   ". . intro"
-  ". . intro";
+  ". . .";
   width: 100%;
 `;
 
@@ -31,13 +31,13 @@ const IndexPage = (props) => {
   const { globalState, dispatch } = useContext(GlobalContext);
 
   return (
-    <HomePage>
+    <BlogIndex>
       <SEO title="Home" />
       <Intro buttonTo="/sights" buttonText="See sights">
         <Title>A platform for sharing and promoting creativity</Title>
         <h5>Bringing only the ripest nuggets from around the globe</h5>
       </Intro>
-    </HomePage>
+    </BlogIndex>
   );
 }
 
