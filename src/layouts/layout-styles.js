@@ -4,9 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 
-
-
-
 export const AppContainer = styled.div`
 
 `;

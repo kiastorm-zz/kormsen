@@ -6,10 +6,6 @@ const defaultState = {
   menuIsOpen: false,
   currentPage: null,
   showCanvas: true,
-  windowSize: {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  }
 };
 
 export const GlobalContext = React.createContext(defaultState);
@@ -29,7 +25,15 @@ const GlobalContextProvider = ({ children }) => {
 
   const [globalState, dispatch] = useReducer(reducer, defaultState);
 
-  const value = { globalState, actions: actions(dispatch) };
+  const value = {
+    globalState: {
+      ...globalState,
+      windowSize: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }
+    }, actions: actions(dispatch)
+  };
 
   return (
     <GlobalContext.Provider value={value}>
