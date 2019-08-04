@@ -5,16 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useContext, useMemo } from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/sidebar";
 import PageTransition from './PageTransition';
-import GlobalContextProvider, { GlobalContext } from "./GlobalContext.js";
+import GlobalContextProvider from "./GlobalContext.js";
 import { useStaticQuery, graphql } from "gatsby";
-import Canvas from "../components/canvas/canvas";
-import styled from "styled-components";
-import below from "../lib/utils/breakpoints";
-import { Link } from "gatsby"
 import ToolBar from "../components/tool-bar";
 import { AppContainer, PageContainer, StyledCanvas, Main, GlobalStyle, StyledPageTransition, PageContent } from "./layout-styles";
 
@@ -29,8 +25,6 @@ const Layout = ({ children, location }) => {
       }
     }
   `);
-
-
 
   const canvas = useMemo(() => <StyledCanvas />);
 

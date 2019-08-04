@@ -1,11 +1,7 @@
 import React, { useContext, useRef } from "react";
-import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import below from "../lib/utils/breakpoints";
-import ToolBar from "../components/tool-bar";
-import GlobalContextProvider, { GlobalContext } from "../layouts/GlobalContext.js";
-
+import { GlobalContext } from "../layouts/GlobalContext.js";
 import { animated, useSpring, useTransition, useChain, config } from 'react-spring';
 
 const Item = styled(animated.div)`
@@ -15,7 +11,6 @@ const Item = styled(animated.div)`
 
 const ToggleMenu = styled(animated.div)`
   position: fixed;
-  background: black;
   top: 0;
   right: 0;
   width: 64px;
@@ -29,6 +24,7 @@ const ToggleMenu = styled(animated.div)`
 
 const MenuItems = styled(animated.div)`
   display: grid;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
   grid-template-areas:
   ". . . close"
   "info navigation playlist ."
@@ -43,7 +39,7 @@ const MenuItems = styled(animated.div)`
 `;
 
 
-const Menu = ({ siteTitle }) => {
+const Menu = () => {
   const { globalState: { menuIsOpen, windowSize }, actions: { toggleMenu } } = useContext(GlobalContext);
 
   const menuData = [
@@ -73,61 +69,63 @@ const Menu = ({ siteTitle }) => {
     },
   ];
 
-  const springRef = useRef()
-  const { width, height, ...rest } = useSpring({
-    ref: springRef,
+  const containerAnimationRef = useRef()
+  const containerAnimation = useSpring({
+    ref: containerAnimationRef,
     config: config.default,
     from: {
-      width: `${64}px`,
-      height: `${64}px`,
+      background: 'white',
+      opacity: 0,
       marginTop: `${12}px`,
       marginRight: `${12}px`,
       borderRadius: `${100}%`,
     },
     to: {
-      width: menuIsOpen ? `${windowSize.width}px` : `${64}px`,
-      height: menuIsOpen ? `${windowSize.height}px` : `${64}px`,
+      background: '#7c4c64',
+      opacity: menuIsOpen ? 1 : 0,
+      width: menuIsOpen ? `${windowSize.width}px` : `${0}px`,
+      height: menuIsOpen ? `${windowSize.height}px` : `${0}px`,
       marginTop: menuIsOpen ? `${0}px` : `${12}px`,
       marginRight: menuIsOpen ? `${0}px` : `${12}px`,
       borderRadius: menuIsOpen ? `${0}%` : `${100}%`,
     }
   });
 
-  const buttonRef = useRef()
-  const { opacity, ...buttonRest } = useSpring({
-    ref: buttonRef,
+
+  const buttonAnimationRef = useRef()
+  const buttonAnimation = useSpring({
+    ref: buttonAnimationRef,
     config: config.default,
     from: {
-      opacity: `0`,
+      background: '#7c4c64',
     },
     to: {
-      opacity: menuIsOpen ? '1' : '0',
+      background: menuIsOpen ? 'lightblue' : '#7c4c64',
     }
   });
 
 
-  const transRef = useRef()
-  const transitions = useTransition(menuIsOpen ? menuData : [], item => item.name, {
-    ref: transRef,
+  const itemsAnimationRef = useRef()
+  const itemsAnimation = useTransition(menuIsOpen ? menuData : [], item => item.name, {
+    ref: itemsAnimationRef,
     unique: true,
-    trail: 100 / menuData.length,
-    from: { opacity: 0, transform: 'scale(0)' },
-    enter: { opacity: 1, transform: 'scale(1)', },
-    leave: { opacity: 0, transform: 'scale(0)' }
+    trail: 200 / menuData.length,
+    from: { opacity: 0 },
+    enter: { opacity: 1, },
+    leave: { opacity: 0 }
   });
 
 
 
   // This will orchestrate the two animations above, comment the last arg and it creates a sequence
-  useChain(menuIsOpen ? [springRef, transRef] : [transRef, springRef], [0, menuIsOpen ? 0.1 : 0.3]);
-
-
+useChain(menuIsOpen ? [buttonAnimationRef, containerAnimationRef, itemsAnimationRef] : [itemsAnimationRef, buttonAnimationRef, containerAnimationRef], [0, menuIsOpen ? 0 : .2, menuIsOpen ? .4 : .2]);
 
   return (
     <>
-      <ToggleMenu style={{ opacity, ...buttonRest }} onClick={toggleMenu} />
-      <MenuItems style={{ ...rest, width, height }}>
-        {transitions.map(({ item, key, props }) => (
+      <ToggleMenu style={{ ...buttonAnimation }} onClick={toggleMenu}>
+      </ToggleMenu>
+      <MenuItems style={{ ...containerAnimation }}>
+        {itemsAnimation.map(({ item, key, props }) => (
           item ?
             <Item
               style={{

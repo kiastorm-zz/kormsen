@@ -21,7 +21,6 @@ const GlobalContextProvider = ({ children }) => {
       case 'TOGGLE_SIDEBAR':
         return { ...globalState, sidebarIsOpen: !globalState.sidebarIsOpen };
       case 'TOGGLE_MENU':
-        console.log('menuIsOpen:', globalState.menuIsOpen);
         return { ...globalState, menuIsOpen: !globalState.menuIsOpen };
       default:
         return globalState
