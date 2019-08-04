@@ -1,7 +1,6 @@
 
 
 import styled, { createGlobalStyle } from 'styled-components';
-import Canvas from '../components/canvas/canvas';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 
