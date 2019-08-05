@@ -3,7 +3,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
-import Canvas from '../components/canvas/canvas';
+import Canvas from '../components/canvas';
 
 export const AppContainer = styled.div`
 
