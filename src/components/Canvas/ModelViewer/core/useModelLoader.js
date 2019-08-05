@@ -20,12 +20,12 @@
 //   return obj ? <primitive object={obj} /> : null;
 // }
 
-import * as THREE from "./node_modules/three";
-import { GLTFLoader } from "./node_modules/three/examples/jsm/loaders/GLTFLoader";
-import { OBJLoader } from "./node_modules/three/examples/jsm/loaders/OBJLoader";
-import { ColladaLoader } from "./node_modules/three/examples/jsm/loaders/ColladaLoader";
-import { FBXLoader } from "./node_modules/three/examples/jsm/loaders/FBXLoader";
-import { useState, useEffect, useMemo } from "./node_modules/react";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { ColladaLoader } from "three/examples/jsm/loaders/ColladaLoader";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { useState, useEffect, useMemo } from "react";
 
 const manager = new THREE.LoadingManager();
 

@@ -1,7 +1,7 @@
 
-import * as THREE from "./node_modules/three/src/Three";
-import React, { useRef, useMemo } from "./node_modules/react";
-import { useRender } from "./node_modules/react-three-fiber";
+import * as THREE from "three/src/Three";
+import React, { useRef, useMemo } from "react";
+import { useRender } from "react-three-fiber";
 
 export default function DanceFloor() {
   let floor = useRef();
