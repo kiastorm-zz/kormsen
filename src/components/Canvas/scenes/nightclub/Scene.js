@@ -1,4 +1,4 @@
-import React from "react";
+import React from "./node_modules/react";
 import Stars from "./assets/Stars";
 import DanceFloor from "./assets/DanceFloor";
 

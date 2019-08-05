@@ -1,7 +1,7 @@
-import * as THREE from "three/src/Three";
-import React, { useRef, useMemo } from "react";
+import * as THREE from "./node_modules/three/src/Three";
+import React, { useRef, useMemo } from "./node_modules/react";
 // A THREE.js React renderer, see: https://github.com/drcmda/react-three-fiber
-import { useRender } from "react-three-fiber";
+import { useRender } from "./node_modules/react-three-fiber";
 // A React animation lib, see: https://github.com/react-spring/react-spring
 
 export default function Stars() {

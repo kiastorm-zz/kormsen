@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
-import { Canvas, useThree, useRender, extend } from "react-three-fiber";
+import React, { useRef, useEffect } from "./node_modules/react";
+import { Canvas, useThree, useRender, extend } from "./node_modules/react-three-fiber";
 import NightclubScene from "./scenes/nightclub/Scene";
 import CoreModelViewer from "./ModelViewer/core/CoreModelViewer";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls";
 import dancingGirl from "../../assets/models/dancing-girl/scene.gltf";
-import styled from 'styled-components';
+import styled from './node_modules/styled-components';
 
 
 extend({ OrbitControls });

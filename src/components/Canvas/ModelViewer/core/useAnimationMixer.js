@@ -1,5 +1,5 @@
-import * as THREE from "three";
-import { useState, useEffect } from "react";
+import * as THREE from "./node_modules/three";
+import { useState, useEffect } from "./node_modules/react";
 
 const LoopMode = {
   once: THREE.LoopOnce,
