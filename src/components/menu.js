@@ -97,10 +97,10 @@ const Menu = () => {
     ref: buttonAnimationRef,
     config: config.default,
     from: {
-      background: '#7c4c64',
+      background: '#F7C1BB',
     },
     to: {
-      background: menuIsOpen ? 'lightblue' : '#7c4c64',
+      background: menuIsOpen ? 'lightblue' : '#F7C1BB',
     }
   });
 
@@ -118,7 +118,7 @@ const Menu = () => {
 
 
   // This will orchestrate the two animations above, comment the last arg and it creates a sequence
-useChain(menuIsOpen ? [buttonAnimationRef, containerAnimationRef, itemsAnimationRef] : [itemsAnimationRef, buttonAnimationRef, containerAnimationRef], [0, menuIsOpen ? 0 : .2, menuIsOpen ? .4 : .2]);
+  useChain(menuIsOpen ? [buttonAnimationRef, containerAnimationRef, itemsAnimationRef] : [itemsAnimationRef, buttonAnimationRef, containerAnimationRef], [0, menuIsOpen ? 0 : .2, menuIsOpen ? .4 : .2]);
 
   return (
     <>

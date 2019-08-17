@@ -3,9 +3,13 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 import below from "../lib/utils/breakpoints";
-
 import { animated, useSpring, useTransition } from 'react-spring';
 
+const NavLink = styled(Link)`
+	display: block;
+	font-size: 20px;
+	padding-left: 12px;
+`;
 
 const StyledSidebar = styled(animated.nav)`
   grid-area: sidebar;
@@ -22,68 +26,81 @@ const StyledSidebar = styled(animated.nav)`
 const Sidebar = ({ siteTitle }) => {
   const sidebar = useSpring({ width: '100%', from: { value: '0' } })
 
-
   return (
     <StyledSidebar
       style={{
-        background: "#141414",
+        background: "#1C1E26",
         sidebar
       }}
     >
-      <div
+      <nav
         style={{
           margin: `0 auto`,
           padding: `20px 30px`,
         }}
       >
-        <h1 style={{ margin: "0 0 20px 0" }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-        <h3>
-          <Link
-            to="/sights"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-              textTransform: "uppercase",
-            }}
-          >
-            Sights
-          </Link>
-        </h3>
-        <h3>
-          <Link
-            to="/sounds"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-              textTransform: "uppercase",
-            }}
-          >
-            sounds
-          </Link>
-        </h3>
-        <h3>
-          <Link
-            to="/thoughts"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-              textTransform: "uppercase",
-            }}
-          >
-            thoughts
-          </Link>
-        </h3>
-      </div>
+				<div
+					style={{
+						backgroundColor: 'white',
+						textAlign: 'center',
+						paddingBottom: '6px',
+						marginBottom: '48px'
+					}}
+				>
+					<h1 style={{
+						margin: "0",
+					}}>
+						<Link
+							to="/"
+							style={{
+								color: `#141414`,
+								textDecoration: `none`,
+								fontFamily: `font92197`,
+								textTransform: 'uppercase',
+								letterSpacing: '2px',
+								fontSize: '52px',
+								fontWeight: '200',
+							}}
+						>
+							{siteTitle}
+						</Link>
+					</h1>
+				</div>
+					<NavLink
+						to="/sights"
+						style={{
+							color: `white`,
+							textDecoration: `none`,
+							textTransform: "uppercase",
+						}}
+					>
+						{/* <Eye /> */}
+						{/* <SightsIcon /> */}
+						Sights
+					</NavLink>
+					<NavLink
+						to="/sounds"
+						style={{
+							color: `white`,
+							textDecoration: `none`,
+							textTransform: "uppercase",
+						}}
+					>
+						{/* <SoundsIcon /> */}
+					sounds
+				</NavLink>
+				<NavLink
+					to="/thoughts"
+					style={{
+						color: `white`,
+						textDecoration: `none`,
+						textTransform: "uppercase",
+					}}
+				>
+					{/* <ThoughtsIcon /> */}
+					thoughts
+				</NavLink>
+      </nav>
     </StyledSidebar>
   );
 }

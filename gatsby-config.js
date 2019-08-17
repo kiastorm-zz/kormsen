@@ -10,7 +10,15 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+		`gatsby-plugin-react-helmet`,
+		{
+			resolve: "gatsby-plugin-react-svg",
+			options: {
+				rule: {
+					include: `/src/icons/`
+				}
+			}
+		},
     `gatsby-image`,
     {
       resolve: `gatsby-source-filesystem`,

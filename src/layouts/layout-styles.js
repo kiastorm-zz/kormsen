@@ -30,7 +30,6 @@ export const PageContainer = styled.div`
 
 export const PageContent = styled.div`
   display: flex;
-  padding: 20px 60px;
 `;
 
 export const StyledCanvas = styled(Canvas)`
@@ -63,6 +62,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
   }
+
   article,
   aside,
   details,

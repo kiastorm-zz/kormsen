@@ -8,11 +8,15 @@ import { GlobalContext } from "../layouts/GlobalContext"
 import { toggleSidebar } from "../layouts/actions"
 
 const Title = styled.h3`
+  color: white;
+`;
 
+const Subtitle = styled.h5`
+  color: white;
 `;
 
 const Intro = styled(Box)`
-  background-color: #C77A58;
+  background-color: #1C1E26;
   grid-area: intro;
   border-radius: 100%;
 `;
@@ -35,7 +39,7 @@ const IndexPage = (props) => {
       <SEO title="Home" />
       <Intro buttonTo="/sights" buttonText="See sights">
         <Title>A platform for sharing and promoting creativity</Title>
-        <h5>Bringing only the ripest nuggets from around the globe</h5>
+        <Subtitle>Bringing only the ripest nuggets of joy</Subtitle>
       </Intro>
     </BlogIndex>
   );

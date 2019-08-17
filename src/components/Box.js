@@ -33,7 +33,7 @@ const BoxButton = styled(animated.div)`
   height: 120px;
   bottom: 0px;
   right: 0px;
-  background-color: #7c4c64;
+  background-color: #56638A;
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
   will-change: transform;
@@ -75,9 +75,9 @@ export default function Box({ buttonTo, buttonText, children, className }) {
         {children}
       </BoxContent>
       <BoxButton
-        // onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-        // onMouseLeave={() => set({ xys: [0, 0, 1] })}
-        // style={{ transform: props.xys.interpolate(trans) }}
+      // onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      // onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      // style={{ transform: props.xys.interpolate(trans) }}
       >
         <Link as="h5" to={buttonTo}>
           <animated.span>

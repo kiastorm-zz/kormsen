@@ -78,6 +78,8 @@ function SEO({ description, lang, meta, title }) {
       ].concat(meta)}
     >
       <meta name="viewport" content="user-scalable=no" />
+			<link href="https://www.fontify.me/wf/7a0f150d25caec1d6fa23b97d5d6efdc" rel="stylesheet" type="text/css" />
+			<link rel="stylesheet" href="https://use.typekit.net/iko0uqp.css" />
     </Helmet>
   );
 }

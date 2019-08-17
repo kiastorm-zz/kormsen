@@ -5,6 +5,7 @@ import CoreModelViewer from "./ModelViewer/core/CoreModelViewer";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import dancingGirl from "../../assets/models/dancing-girl/scene.gltf";
 import styled from 'styled-components';
+import { useSpring } from 'react-spring';
 
 
 extend({ OrbitControls });
@@ -19,7 +20,7 @@ function CameraControls(props) {
 }
 
 const CanvasContainer = styled.div`
-  background-color: rgba(30,30,30, .4);
+  background-color: rgba(30,30,30, .8);
 `;
 
 const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
@@ -64,7 +65,7 @@ const ThreeCanvas = ({ src, type, aspect, className, ...rest }) => {
       }) => (
           <CanvasContainer className={className}>
             <Canvas
-              style={{ background: "#333" }}
+              style={{ background: "#353A47" }}
               camera={{ position: [100, 0, 160] }}
               {...rest}
             >

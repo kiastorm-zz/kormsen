@@ -8,7 +8,6 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/sidebar";
-import PageTransition from './PageTransition';
 import GlobalContextProvider from "./GlobalContext.js";
 import { useStaticQuery, graphql } from "gatsby";
 import ToolBar from "../components/tool-bar";
@@ -28,22 +27,31 @@ const Layout = ({ children, location }) => {
 
   const canvas = useMemo(() => <StyledCanvas />);
 
+	console.log(location);
   return (
     <GlobalContextProvider>
       <GlobalStyle />
       <AppContainer>
-        <ToolBar />
-        <PageContainer>
-          <Sidebar siteTitle={data.site.siteMetadata.title} />
-          <Main>
-            {canvas}
-            <StyledPageTransition location={location}>
-              <PageContent>
-                {children}
-              </PageContent>
-            </StyledPageTransition>
-          </Main>
-        </PageContainer>
+				{	location.pathname.includes('pml') ?
+				<h1>HELLO</h1>
+
+				:
+				<>
+					<ToolBar />
+					<PageContainer>
+						<Sidebar siteTitle={data.site.siteMetadata.title} />
+						<Main>
+							{canvas}
+							<StyledPageTransition location={location}>
+								<PageContent>
+									{children}
+								</PageContent>
+							</StyledPageTransition>
+						</Main>
+					</PageContainer>
+				</>
+				}
+
       </AppContainer>
     </GlobalContextProvider>
   );
