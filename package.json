@@ -21,8 +21,10 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-sharp": "^2.2.4",
     "gltf-webpack-loader": "^1.0.6",
+    "grommet": "^2.7.6",
     "libreact": "^2.13.1",
     "netlify-cms-app": "^2.9.7",
+    "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -30,12 +32,14 @@
     "react-spring": "^8.0.27",
     "react-three-fiber": "^2.2.14",
     "react-transition-group": "^4.2.1",
+    "rebass": "^4.0.2",
     "styled-components": "^4.3.2",
     "styled-icons": "^8.3.0",
     "three": "^0.106.2",
     "three-orbit-controls": "^82.1.0"
   },
   "devDependencies": {
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.5",
     "prettier": "^1.18.2",
     "webpack": "^4.37.0"
   },

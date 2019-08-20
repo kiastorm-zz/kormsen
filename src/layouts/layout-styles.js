@@ -4,9 +4,25 @@ import styled, { createGlobalStyle } from 'styled-components';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 import Canvas from '../components/Canvas';
+import {Box} from 'rebass';
 
 export const AppContainer = styled.div`
+	height: 100vh;
+`;
 
+export const PMLPageContent = styled(Box)`
+	grid-area: main;
+`;
+
+export const PMLContainer = styled(Box)`
+	display: grid;
+	grid-template-rows: 72px 1fr;
+	grid-template-columns: 280px 1fr;
+	grid-template-areas:
+		"header header"
+		"nav main";
+	width: 100%;
+	height: 100%;
 `;
 
 export const PageContainer = styled.div`

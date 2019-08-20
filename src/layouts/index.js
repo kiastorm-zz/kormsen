@@ -11,7 +11,20 @@ import Sidebar from "../components/sidebar";
 import GlobalContextProvider from "./GlobalContext.js";
 import { useStaticQuery, graphql } from "gatsby";
 import ToolBar from "../components/tool-bar";
-import { AppContainer, PageContainer, StyledCanvas, Main, GlobalStyle, StyledPageTransition, PageContent } from "./layout-styles";
+import PMLHeader from "../components/pml/pml-header";
+import PMLSidebar from "../components/pml/pml-sidebar/pml-sidebar";
+import { Box } from 'rebass';
+import { ThemeProvider } from 'styled-components';
+import { AppContainer, PMLContainer, PMLPageContent, PageContainer, StyledCanvas, Main, GlobalStyle, StyledPageTransition, PageContent } from "./layout-styles";
+
+const theme = {
+	colors: {
+		darkblue: '#1d3343',
+		greyblue: '#4C6173',
+		blue: '#009EF7',
+		bggrey: '#e1e1e1',
+	},
+};
 
 
 const Layout = ({ children, location }) => {
@@ -27,32 +40,38 @@ const Layout = ({ children, location }) => {
 
   const canvas = useMemo(() => <StyledCanvas />);
 
-	console.log(location);
   return (
     <GlobalContextProvider>
-      <GlobalStyle />
-      <AppContainer>
-				{	location.pathname.includes('pml') ?
-				<h1>HELLO</h1>
+			{/* <ThemeProvider theme={theme}> */}
+				<GlobalStyle />
+				<AppContainer>
+					{	location.pathname.includes('pml') ?
+					<PMLContainer>
+						<PMLHeader  />
+						<PMLSidebar/>
+						<PMLPageContent>
+							{children}
+						</PMLPageContent>
+					</PMLContainer>
+					:
+					<>
+						<ToolBar />
+						<PageContainer>
+							<Sidebar siteTitle={data.site.siteMetadata.title} />
+							<Main>
+								{canvas}
+								<StyledPageTransition location={location}>
+									<PageContent>
+										{children}
+									</PageContent>
+								</StyledPageTransition>
+							</Main>
+						</PageContainer>
+					</>
+					}
 
-				:
-				<>
-					<ToolBar />
-					<PageContainer>
-						<Sidebar siteTitle={data.site.siteMetadata.title} />
-						<Main>
-							{canvas}
-							<StyledPageTransition location={location}>
-								<PageContent>
-									{children}
-								</PageContent>
-							</StyledPageTransition>
-						</Main>
-					</PageContainer>
-				</>
-				}
-
-      </AppContainer>
+				</AppContainer>
+			{/* </ThemeProvider> */}
     </GlobalContextProvider>
   );
 };
