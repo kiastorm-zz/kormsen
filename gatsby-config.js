@@ -20,6 +20,14 @@ module.exports = {
 			}
 		},
 		{
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Noto Serif', 'Slabo 27px', 'Poppins']
+        }
+      }
+    },
+		{
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
         devMode: true,

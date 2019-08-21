@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useMeasure, usePrevious } from './helpers'
 import { Frame, Title, Content, toggle } from './styles'
-import {Box} from 'rebass';
+import {Box} from 'rebass/styled-components';
 import * as Icons from './icons'
 import styled from 'styled-components';
 
@@ -33,6 +33,9 @@ const Tree = memo(({ children, name, style, defaultOpen = false }) => {
 export default () => (
   <StyledSidebar>
     <Tree name="Music Production Courses" defaultOpen>
+			<Tree name="Techno Courses" />
+			<Tree name="Sound Design Courses" />
+			<Tree name="Arrangement Courses" />
     </Tree>
 		<Tree name="DAW Files">
 

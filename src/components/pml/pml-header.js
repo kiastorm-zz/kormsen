@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Box, Heading} from 'rebass';
+import {Box, Heading} from 'rebass/styled-components';
+import { Link } from "gatsby";
 
 const StyledHeader = styled(Box)`
 	display: flex;
@@ -9,6 +10,7 @@ const StyledHeader = styled(Box)`
 	width: 100%;
 	grid-area: header;
 	background-color: #1d3343;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 `;
 
 const GridContainer = styled.div`
@@ -21,11 +23,13 @@ const GridContainer = styled.div`
 
 const NavLinks = styled.nav`
 	display: inline-flex;
+	width: 100%;
 `;
 
-const NavText = styled.a`
+const NavText = styled(Link)`
 	text-decoration: none;
 	color: white;
+	margin-left: 20px;
 `;
 
 const Logo = styled.span`
@@ -45,12 +49,12 @@ const PMLHeader = (props) => {
 					PML
 				</Logo>
 				<NavLinks>
-					<NavText href="#">Music Production Courses</NavText>
-					<NavText href="#">DAW Files</NavText>
-					<NavText href="#">Synth Presets</NavText>
-					<NavText href="#">Bundle Packs</NavText>
-					<NavText href="#">!Freebies!</NavText>
-					<NavText href="#">Blog</NavText>
+					<NavText to="/pml/courses" style={{fontWeight: 'bold'}}>Music Production Courses</NavText>
+					<NavText to="#">DAW Files</NavText>
+					<NavText to="#">Synth Presets</NavText>
+					<NavText to="#">Bundle Packs</NavText>
+					<NavText to="#">!Freebies!</NavText>
+					<NavText to="#" style={{marginLeft: 'auto'}}>Blog</NavText>
 				</NavLinks>
 			</GridContainer>
 		</StyledHeader>

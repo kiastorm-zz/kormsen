@@ -4,14 +4,17 @@ import styled, { createGlobalStyle } from 'styled-components';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 import Canvas from '../components/Canvas';
-import {Box} from 'rebass';
+import {Box} from 'rebass/styled-components';
 
 export const AppContainer = styled.div`
 	height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
 `;
 
 export const PMLPageContent = styled(Box)`
 	grid-area: main;
+	overflow-y: scroll;
 `;
 
 export const PMLContainer = styled(Box)`
@@ -20,9 +23,13 @@ export const PMLContainer = styled(Box)`
 	grid-template-columns: 280px 1fr;
 	grid-template-areas:
 		"header header"
-		"nav main";
+		"main main";
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
+	overflow-x: hidden;
+	width: 100vw;
+	max-width: 100vw;
 `;
 
 export const PageContainer = styled.div`
@@ -30,8 +37,7 @@ export const PageContainer = styled.div`
   grid-template-areas: "sidebar main";
   grid-template-columns: 230px 1fr;
   grid-template-rows: 1fr;
-  height: 100vh;
-  overflow: hidden;
+
 
   ${below.p`
     grid-template-areas:
