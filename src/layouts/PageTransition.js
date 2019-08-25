@@ -23,7 +23,7 @@ const getTransitionStyles = {
 }
 const PageTransition = ({ className, children, location }) => {
   return (
-    <TransitionGroup className={className}>
+    <TransitionGroup className={className} style={{gridArea: 'main', position: 'relative'}}> 
       <ReactTransition
         key={location.pathname}
         timeout={{

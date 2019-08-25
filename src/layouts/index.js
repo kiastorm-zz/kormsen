@@ -18,47 +18,6 @@ import { AppContainer, PMLContainer, PMLPageContent, PageContainer, StyledCanvas
 
 
 
-const theme = {
-  breakpoints: ['40em', '52em', '64em'],
-  fontSizes: [
-    12, 14, 16, 20, 24, 32, 48, 64
-  ],
-  colors: {
-    blue: '#07c',
-    lightgray: '#f6f6ff'
-  },
-  space: [
-		0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80
-  ],
-  fonts: {
-    body: 'Poppins',
-    heading: 'Slabo 27px',
-    monospace: 'Menlo, monospace',
-  },
-  fontWeights: {
-    body: 400,
-    heading: 700,
-    bold: 700,
-  },
-  lineHeights: {
-    body: 1.5,
-    heading: 1.25,
-  },
-  shadows: {
-    small: '0 0 4px rgba(0, 0, 0, .125)',
-    large: '0 0 24px rgba(0, 0, 0, .125)'
-  },
-  variants: {
-  },
-  text: {
-  },
-  buttons: {
-    primary: {
-      color: 'white',
-      bg: 'primary',
-    }
-  }
-};
 
 
 const Layout = ({ children, location }) => {
@@ -77,11 +36,58 @@ const Layout = ({ children, location }) => {
   return (
     <GlobalContextProvider>
 			<GlobalStyle />
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={{
+        breakpoints: ['40em', '52em', '64em'],
+        fontSizes: [
+          12, 14, 16, 20, 24, 32, 48, 60, 68
+        ],
+        colors: {
+          pmlBlue: '#1d3343',
+          lightGray: '#f6f6ff',
+          extraLightGray: '#f1f1f1'
+        },
+        space: [
+          0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112, 116, 120, 14, 128
+        ],
+        fonts: {
+          body: "'Lexend Deca'",
+          heading: "'Lexend Deca', sans-serif",
+          monospace: 'Menlo, monospace',
+        },
+        fontWeights: {
+          body: 400,
+          heading: 500,
+          bold: 700,
+        },
+        lineHeights: {
+          body: 1.5,
+          heading: 1.25,
+        },
+        letterSpacing: {
+          heading: 1.5,
+        },
+        shadows: {
+          small: '0 0 4px rgba(0, 0, 0, .125)',
+          large: '0 0 24px rgba(0, 0, 0, .125)'
+        },
+        variants: {
+        },
+        text: {
+        },
+        buttons: {
+          primary: {
+            color: 'white',
+            bg: 'primary',
+          }
+        }
+      }}>
 				<AppContainer>
 					{	location.pathname.includes('pml') ?
 					<>
-						<PMLContainer>
+						<PMLContainer
+              flexDirection="column"
+
+            >
 							<PMLHeader />
 							<StyledPageTransition location={location}>
 								<PMLPageContent>

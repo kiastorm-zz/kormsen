@@ -23,7 +23,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Noto Serif', 'Slabo 27px', 'Poppins']
+          families: ['Noto Serif', 'Lexend Deca', 'Poppins', 'Nanum Gothic']
         }
       }
     },

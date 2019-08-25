@@ -4,12 +4,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 import below from "../lib/utils/breakpoints";
 import PageTransition from './PageTransition';
 import Canvas from '../components/Canvas';
-import {Box} from 'rebass/styled-components';
+import {Flex, Box} from 'rebass/styled-components';
 
 export const AppContainer = styled.div`
-	height: 100vh;
-	width: 100vw;
-	overflow-x: hidden;
 `;
 
 export const PMLPageContent = styled(Box)`
@@ -17,18 +14,16 @@ export const PMLPageContent = styled(Box)`
 	overflow-y: scroll;
 `;
 
-export const PMLContainer = styled(Box)`
+export const PMLContainer = styled(Flex)`
 	display: grid;
-	grid-template-rows: 72px 1fr;
-	grid-template-columns: 280px 1fr;
+	grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr;
 	grid-template-areas:
-		"header header"
-		"main main";
+		"header"
+		"main";
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
-	overflow-x: hidden;
-	width: 100vw;
+  min-height: 100vh;
 	max-width: 100vw;
 `;
 
@@ -55,19 +50,18 @@ export const PageContent = styled.div`
 `;
 
 export const StyledCanvas = styled(Canvas)`
-    grid-area: main;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  `;
-
-export const StyledPageTransition = styled(PageTransition)`
+  /* grid-area: main; */
   position: absolute;
   width: 100%;
-  `;
+  height: 100%;
+`;
+
+export const StyledPageTransition = styled(PageTransition)`
+  width: 100%;
+`;
 
 export const Main = styled.div`
-  grid-area: main;
+  /* grid-area: main; */
   position: relative;
 `;
 
@@ -76,13 +70,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    overflow: hidden;
   }
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
   }
 
   article,

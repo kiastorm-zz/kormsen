@@ -1,7 +1,14 @@
+import React from 'react'
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+import {Box, Flex, Heading} from 'rebass/styled-components';
 
-const Frame = styled('div')`
+const Frame = styled(props => (
+  <Box 
+    mb={1}
+    {...props}
+  />
+))`
   position: relative;
   padding: 4px 0px 0px 0px;
   text-overflow: ellipsis;
@@ -12,11 +19,16 @@ const Frame = styled('div')`
   fill: white;
 `
 
-const Title = styled('span')`
+const Title = styled(props => (
+  <Heading
+    fontSize={[1]}
+    {...props} 
+  />
+))`
   vertical-align: middle;
 `
 
-const Content = styled(animated.div)`
+const Content = styled(animated(Box))`
   will-change: transform, opacity, height;
   margin-left: 6px;
   padding: 0px 0px 0px 14px;

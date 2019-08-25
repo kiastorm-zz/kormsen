@@ -1,19 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Box, Grid, Heading, Card, Image} from 'rebass/styled-components';
+import {Box, Grid, Flex, Heading, Card, Image} from 'rebass/styled-components';
 import {animated, useTransition} from 'react-spring'
 import Hero from '../../components/hero';
 import square1 from '../../assets/images/slide_5.webp';
-import Carousel from 'react-spring-3d-carousel';
+import square2 from '../../assets/images/pml/courses/beginners.webp';
+import square3 from '../../assets/images/pml/courses/chords.webp';
+import square4 from '../../assets/images/pml/courses/push2.webp';
+import square5 from '../../assets/images/pml/courses/samples1.webp';
+import square6 from '../../assets/images/pml/courses/samples2.webp';
+import square7 from '../../assets/images/pml/courses/samples3.webp';
+import square8 from '../../assets/images/pml/courses/samples4.webp';
+import square9 from '../../assets/images/pml/courses/techno.webp';
+import square10 from '../../assets/images/pml/courses/techno2.webp';
+import square11 from '../../assets/images/pml/courses/techno3.webp';
+import square12 from '../../assets/images/pml/courses/grooverhythm.webp';
+import square13 from '../../assets/images/pml/courses/melodies.webp';
+import Slideshow from '../../components/Slideshow';
 import randomString from '../../lib/utils/random-string';
+import GridContainer from '../../components/grid-container';
 
-const PageContainer = styled.div`
-	display: grid;
-	grid-template-rows: 300px 1fr;
-	width: 100%;
+const PageContainer = styled(Flex)`
 `;
-
-
 
 const Showing = styled(Box)`
 	grid-area: showing;
@@ -27,114 +35,157 @@ const TopRated = styled(Box)`
 	grid-area: toprated;
 `;
 
+const TopRatedChart = styled(Box)`
+
+`;
+
 const Bundles = styled.div`
 	background: lightred;
 	grid-area: bundles;
 `;
 
-// const HeroLeft = styled.div`
-// 	grid-column: span 7;
-// `;
-
-const Main = styled(Box)`
-	display: grid;
-	grid-template:
-	"featured toprated" 240px
-	"whatsnew toprated" 240px
-	"showing 	showing" 1000px
-	"showing 	showing"  100px / 1fr 320px;
-	padding: 80px 0;
-	width: 100%;
-	overflow: hidden;
-
+const Main = styled(Flex)`
 `;
 
-const SquareSlideshow = styled(Carousel)`
+const List = styled(Flex)`
+`;
 
+const Item = styled(Flex)`
+	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
 `;
 
 const featuredSlides = [
-	{
+  {
     key: randomString(4),
-    content: <Image src={square1} />
+	image: square1,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square2,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square3,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square4,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square5,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square6,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square7,
+	caption: 'Example',
   },
   {
     key: randomString(4),
-		content: <Image src={square1} />
+	image: square8,
+	caption: 'Example',
+  },
+  {
+    key: randomString(4),
+	image: square9,
+	caption: 'Example',
+  },
+  {
+    key: randomString(4),
+	image: square10,
+	caption: 'Example',
   }
 ];
 
 
 const PMLIndex = (props) => {
 	return (
-		<PageContainer>
-				<Hero />
-				<Main bg="lightgray">
-					<Featured px={15}>
-						<Heading
-							fontSize={[7, 5, 5]}
-							mb={12}>
-								Featured on Production Music Live
-							</Heading>
-						<SquareSlideshow offsetRadius={2} slides={featuredSlides} />
-
-					</Featured>
-					<TopRated
-						bg="autopilotgreen"
-						px={3}
-						py={5}
-						m={6}
-						mr={15}
-						color="lightgray"
+		<PageContainer
+			flexDirection="column"
+			
+			width={[1]}
+		>
+			<Hero />
+			<Main bg="lightGray" flexWrap="wrap" py={20}>
+				<GridContainer>
+					<Featured 
+						pr={3}
+						width={[3/4]}
 					>
-						<Heading
-							fontSize={[5, 4, 4]}
-							mb={[3]}
-						>
-							Top Rated
-						</Heading>
+							<Heading
+								fontSize={[4, 3]}
+								mb={12}>
+									Featured on Production Music Live
+								</Heading>
+							<Slideshow slides={featuredSlides} />
+					</Featured>
 
-						<Box mb={6} sx={{border:"1px solid blue"}} py={1} px={2}>
-							<Heading>Course</Heading>
-						</Box>
-						<Box mb={6} sx={{border:"1px solid blue"}} py={1} px={2}>
-							<Heading>Techno Template</Heading>
-						</Box>
-						<Box mb={6} sx={{border:"1px solid blue"}} py={1} px={2}>
-							<Heading>Best Sample Pack Ever</Heading>
-						</Box>
-						<Box mb={6} sx={{border:"1px solid blue"}} py={1} px={2}>
-							<Heading>Something else</Heading>
-						</Box>
-					</TopRated>
-					<Showing bg="white">
-						<Heading fontSize={[7, 6, 6]}>Awesome description/preview of featured content</Heading>
-					</Showing>
-				</Main>
+					<TopRated
+						pl={6}
+						width={[1/4]}
+						height={400}
+					>
+							<TopRatedChart
+								bg="white"
+								height="100%"
+								py={3}
+							>
+								<Heading
+									fontSize={3}
+									ml={4}
+									mb={5}
+									borderRadius={4}
+								>
+									Top Rated
+								</Heading>
+								<List flexDirection="column">
+									<Item alignItems="center">
+										<Image src={square2} width={[1/5]} />
+										<Box pl={4} width={[3/5]} >
+											<Heading fontSize={[1]}>Beginners Course Start to Finish</Heading>
+										</Box>
+									</Item>
+									<Item alignItems="center">
+										<Image src={square2} width={[1/5]} />
+										<Box pl={4} width={[3/5]} >
+											<Heading fontSize={[1]}>Beginners Course Start to Finish</Heading>
+										</Box>
+									</Item>
+									<Item alignItems="center">
+										<Image src={square2} width={[1/5]} />
+										<Box pl={4} width={[3/5]} >
+											<Heading fontSize={[1]}>Beginners Course Start to Finish</Heading>
+										</Box>
+									</Item>
+									<Item alignItems="center">
+										<Image src={square2} width={[1/5]} />
+										<Box pl={4} width={[3/5]} >
+											<Heading fontSize={[1]}>Beginners Course Start to Finish</Heading>
+										</Box>
+									</Item>
+									<Item alignItems="center">
+										<Image src={square2} width={[1/5]} />
+										<Box pl={4} width={[3/5]} >
+											<Heading fontSize={[1]}>Beginners Course Start to Finish</Heading>
+										</Box>
+									</Item>
+
+								</List>
+							</TopRatedChart>
+					</TopRated> 
+				</GridContainer>
+			</Main>
 		</PageContainer>
 	);
 }

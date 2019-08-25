@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useMeasure, usePrevious } from './helpers'
 import { Frame, Title, Content, toggle } from './styles'
-import {Box} from 'rebass/styled-components';
+import {Box, Flex} from 'rebass/styled-components';
 import * as Icons from './icons'
 import styled from 'styled-components';
 
@@ -21,8 +21,10 @@ const Tree = memo(({ children, name, style, defaultOpen = false }) => {
   const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
   return (
     <Frame>
-      <Icon style={{ ...toggle, opacity: children ? 1 : 0.3 }} onClick={() => setOpen(!isOpen)} />
-      <Title style={style}>{name}</Title>
+      <Flex mb={1}>
+        <Icon style={{ ...toggle, opacity: children ? 1 : 0.3 }} onClick={() => setOpen(!isOpen)} />
+        <Title style={style}>{name}</Title>
+      </Flex>
       <Content style={{ opacity, height: isOpen && previous === isOpen ? 'auto' : height }}>
         <animated.div style={{ transform }} {...bind} children={children} />
       </Content>

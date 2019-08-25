@@ -1,0 +1,8 @@
+@charset "utf-8";
+@font-face {
+font-family: "font92197";
+font-family: "font92197";
+src: url("https://www.fontify.me/cm/7a0f150d25caec1d6fa23b97d5d6efdc/Helvetica-UltraCompressed.woff") format("woff");
+font-weight: normal;
+font-style: normal;
+}

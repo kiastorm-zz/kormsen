@@ -1,62 +1,131 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Box, Heading} from 'rebass/styled-components';
+import {Flex, Box, Heading} from 'rebass/styled-components';
 import { Link } from "gatsby";
+import GridContainer from '../grid-container';
 
-const StyledHeader = styled(Box)`
-	display: flex;
-	align-items: center;
-	height: 72px;
-	width: 100%;
-	grid-area: header;
-	background-color: #1d3343;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+const StyledHeader = styled(Flex)`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 `;
 
-const GridContainer = styled.div`
-	max-width: 1200px;
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	width: 100%;
-`;
+
 
 const NavLinks = styled.nav`
-	display: inline-flex;
-	width: 100%;
+	display: flex;
+	align-items: center;
 `;
 
-const NavText = styled(Link)`
+
+const NavLinksLeft = styled(NavLinks)`
+
+`;
+
+const NavLinksRight = styled(NavLinks)`
+	margin-left: auto;
+`;
+
+const NavText = styled(({children, className, to, ...rest}) => (
+	<Link to={to} className={className}>
+		<Heading 
+			color="white"
+			ml={5}
+			{...rest}
+		>
+			{children}
+		</Heading>
+	</Link>
+))`
 	text-decoration: none;
-	color: white;
-	margin-left: 20px;
-`;
+`
+;
 
-const Logo = styled.span`
+const Logo = styled(Link)`
 	background-color: #1d3343;
 	color: white;
+	text-decoration: none;
+	align-items: center;
 	letter-spacing: 8px;
 	font-family: abolition, sans-serif;
-	font-size: 40px;
-	padding: 12px 12px 16px;
 `;
 
 const PMLHeader = (props) => {
 	return (
-		<StyledHeader>
-			<GridContainer>
-				<Logo>
+		<StyledHeader
+			px={4}
+			bg="pmlBlue"
+			alignItems="center"
+			width={[1]}
+			gridArea="header"
+			shadow="small"
+			height="60px"
+		>
+			<NavLinksLeft>
+				<NavText 
+					fontSize={[4]}
+					to="/pml/"
+					mr={5}
+				>
 					PML
-				</Logo>
-				<NavLinks>
-					<NavText to="/pml/courses" style={{fontWeight: 'bold'}}>Music Production Courses</NavText>
-					<NavText to="#">DAW Files</NavText>
-					<NavText to="#">Synth Presets</NavText>
-					<NavText to="#">Bundle Packs</NavText>
-					<NavText to="#">!Freebies!</NavText>
-					<NavText to="#" style={{marginLeft: 'auto'}}>Blog</NavText>
-				</NavLinks>
-			</GridContainer>
+				</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/courses" 
+					style={{fontWeight: 'bold'}}
+				>Music Production Courses</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/"
+				>
+					DAW Files
+				</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/"
+				>
+					Synth Presets
+				</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/"
+				>
+					Bundle Packs
+				</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/"
+				>
+					!Freebies!
+				</NavText>
+				<NavText 
+					fontSize={[2]}
+					to="/pml/"
+				>
+					Blog
+				</NavText>
+			</NavLinksLeft>
+			<NavLinksRight>
+				<NavText
+					fontSize={[2]}
+					to="/pml/"
+				>
+					Login
+				</NavText>
+				<NavText
+					fontSize={[2]}
+					to="/pml/"
+				>
+					Cart
+				</NavText>
+				<NavText
+					fontSize={[2]}
+					to="/pml/"
+				>
+					GBP
+				</NavText>
+			</NavLinksRight>
 		</StyledHeader>
 	);
 }
