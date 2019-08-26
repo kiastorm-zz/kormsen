@@ -2,12 +2,11 @@ import React, { memo, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useMeasure, usePrevious } from './helpers'
 import { Frame, Title, Content, toggle } from './styles'
-import {Box, Flex} from 'rebass/styled-components';
+import {Box, Flex, Heading} from 'rebass/styled-components';
 import * as Icons from './icons'
 import styled from 'styled-components';
 
-const StyledSidebar = styled.div`
-	background-color: #4C6173;
+const StyledSidebar = styled(Flex)`
 `;
 
 const Tree = memo(({ children, name, style, defaultOpen = false }) => {
@@ -33,23 +32,32 @@ const Tree = memo(({ children, name, style, defaultOpen = false }) => {
 })
 
 export default () => (
-  <StyledSidebar>
-    <Tree name="Music Production Courses" defaultOpen>
-			<Tree name="Techno Courses" />
-			<Tree name="Sound Design Courses" />
-			<Tree name="Arrangement Courses" />
-    </Tree>
-		<Tree name="DAW Files">
-
-		</Tree>
-		<Tree name="DAW Files">
-
-		</Tree>
-		<Tree name="Bundle Packs">
-
-		</Tree>
-		<Tree name="!Freebies!">
-
-		</Tree>
+  <StyledSidebar height="100%" bg="#4C6173" flexDirection="column" px={4} pt={4}>
+    <Heading color="white" alignSelf="start" pb={4}>Filter results</Heading>
+    <Box>
+      <Tree name="Genres" defaultOpen>
+        <Tree name="Techno" />
+        <Tree name="House" />
+        <Tree name="EDM" />
+        <Tree name="Other" />
+      </Tree>
+      <Tree name="Topics">
+        <Tree name="Music Theory" />
+        <Tree name="Arrangement" />
+        <Tree name="Groove Rhythm" />
+      </Tree>
+      <Tree name="DAW">
+        <Tree name="Ableton Live" />
+        <Tree name="FL Studio" />
+        <Tree name="Logic Pro" />
+      </Tree>
+      <Tree name="Sound Design">
+        <Tree name="Serum" />
+        <Tree name="Massive" />
+      </Tree>
+      <Tree name="Mixing & Mastering">
+        <Tree name="You get the idea ;)" />
+      </Tree>
+    </Box>
   </StyledSidebar>
 );
